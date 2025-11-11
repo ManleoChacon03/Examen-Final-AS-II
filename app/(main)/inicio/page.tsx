@@ -83,7 +83,7 @@ const handleContactoSubmit = async (e: FormEvent<HTMLFormElement>) => {
           ">OK</button>
         </div>
       `;
-      document.body.appendChild(alerta);
+document.documentElement.appendChild(alerta);
 
 const cerrarAlertaBtn = alerta.querySelector('#cerrar-alerta');      
 cerrarAlertaBtn?.addEventListener('click', () => {
