@@ -5,8 +5,8 @@ import { NextResponse } from 'next/server';
 
 // --- CONFIGURACIÓN DE IMAGGA ---
 // ¡Sacado de tu captura 'image_f61103.png'!
-const IMAGGA_API_KEY = 'acc_b4cc4db2d31dcc5';
-const IMAGGA_API_SECRET = '0652e2bb637c43c68fa5622d54e0aa81';
+const IMAGGA_API_KEY = process.env.IMAGGA_API_KEY;
+const IMAGGA_API_SECRET = process.env.IMAGGA_API_SECRET;
 
 const API_URL = 'https://api.imagga.com/v2/tags';
 
