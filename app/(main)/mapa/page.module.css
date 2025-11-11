@@ -1,0 +1,83 @@
+/* app/mapa/page.module.css */
+/* ESTILOS DEL MAPA (mapa.html) - CORREGIDOS */
+
+.body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('https://thumbs.dreamstime.com/b/fondo-de-naturaleza-verde-para-el-concepto-pantalla-ecolog%C3%ADa-y-frescura-hermosa-hoja-en-un-d%C3%ADa-soleado-174436676.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: rgba(27, 67, 50, 0.95);
+  color: white;
+  padding: 20px 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  /* El color ya lo define globals.css, pero lo forzamos a blanco */
+  color: white !important; 
+}
+
+/* CAMBIADO DE #map A .mapContainer */
+.mapContainer {
+  height: 550px;
+  width: 90%;
+  margin: 30px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.volver {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.volver a {
+  background-color: #40916c;
+  color: white;
+  padding: 12px 28px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.volver a:hover {
+  background-color: #1b4332;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  /* CAMBIADO DE #map A .mapContainer */
+  .mapContainer {
+    height: 400px;
+    width: 95%;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .volver a {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* CAMBIADO DE #map A .mapContainer */
+  .mapContainer {
+    height: 350px;
+  }
+}

@@ -1,26 +1,122 @@
-@import "tailwindcss";
+/* app/globals.css */
+/* VERSIÓN CORREGIDA Y LIMPIA */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  /* ¡FONDO DE IMAGEN ELIMINADO DE AQUÍ! */
+  backdrop-filter: brightness(0.9);
+  color: #333;
+}
+
+h1, h2, h3, h4 { color: #1b4332; font-weight: bold; }
+section { padding: 60px 20px; }
+.navbar { border-bottom: 3px solid #14532d; position: sticky; top: 0; z-index: 1000; }
+.navbar-brand { font-weight: bold; font-size: 1.5rem; }
+.nav-link { font-size: 1rem; }
+.nav-link:hover { text-decoration: underline; }
+.btn-success { background-color: #40916c; border-color: #1b4332; }
+.btn-success:hover { background-color: #1b4332; border-color: #1b4332; }
+form input, form textarea { border-radius: 8px; border: 1px solid #ccc; }
+footer { background-color: #1b4332; color: #fff; }
+i.fa-3x { margin-bottom: 10px; }
+a { text-decoration: none; }
+img { max-width: 100%; height: auto; }
+ul { list-style-type: square; padding-left: 1.2rem; }
+
+/* --- SECCIÓN DE ANIMACIÓN CORREGIDA --- */
+
+/* Por defecto, 'fade-in' está invisible */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  transform: translateY(20px);
+}
+
+/* Cuando React añade la clase '.visible', se activa la animación */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación de la tabla (sin cambios, ya que se aplica dinámicamente) */
+.animated-table {
+  animation: fadeSlide 0.8s ease;
+}
+@keyframes fadeSlide {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Transición del botón de contacto */
+#formulario-contacto button {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+#formulario-contacto button:hover {
+  transform: scale(1.03);
+  background-color: #1b4332 !important;
+}
+
+/* --- FIN DE ANIMACIONES --- */
+
+/* Mejor legibilidad de las filas */
+#tabla-recorrido tr:hover {
+  background-color: #e6f4ea;
+}
+
+.desecho.seleccionado {
+  outline: 3px solid #1b4332;
+  background-color: #d1e7dd;
+}
+
+/* ¡¡¡AQUÍ ESTÁ LA CORRECCIÓN!!! */
+/* Se quitaron los márgenes, bordes y sombras para que ocupe todo */
+/* ¡REGLA CORREGIDA 1! (Sin 'nav') */
+section, footer { 
+  background-color: #fbfbfb !important;
+  border-radius: 0;
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 100%;
+  box-shadow: none;
+}
+
+/* ¡REGLA CORREGIDA 2! (Estilos solo para 'nav') */
+nav {
+  background-color: #fbfbfb !important;
+  border-radius: 0;
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 100%;
+  box-shadow: none;
+}
+
+audio {
+  display: none;
+}
+
+/* ¡AÑADIDO AL FINAL! */
+/* El fondo para las páginas internas (el layout principal) */
+.main-background {
+  /*background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1950&q=80');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;*/
+  background-color: #f0f2f5; /* Un gris muy claro */
+}
+

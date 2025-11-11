@@ -1,0 +1,50 @@
+/* app/page.module.css */
+/* ¡Versión corregida! */
+
+/* Esta clase la aplicamos al <div> principal en page.tsx */
+.body {
+  background-image: url('https://assets.weforum.org/article/image/VU9BJASofkPtRqjyznr_ha_ToPrjqUpAqPjafuToKqQ.jpeg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  /* Esta animación 'fadeInPage' se enlazará automáticamente 
+    con los keyframes definidos abajo.
+  */
+  animation: fadeInPage 1.2s ease-in-out;
+}
+
+/* Esta clase la aplicamos al <Link> en page.tsx */
+.link {
+  background-color: #40916c;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.link:hover {
+  background-color: #1b4332;
+}
+
+/* Esta es la forma correcta. 
+  Simplemente definimos los keyframes.
+  Ya no usamos :global().
+*/
+@keyframes fadeInPage {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+

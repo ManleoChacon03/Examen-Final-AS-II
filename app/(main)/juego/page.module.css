@@ -1,0 +1,108 @@
+/* app/juego/page.module.css */
+/* ESTILOS DEL JUEGO (juego.html) - CORREGIDOS */
+
+.body {
+  background-image: url('https://i.pinimg.com/originals/06/f5/9f/06f59f74680e5a3b1786e24caeef093f.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  /* Añadimos padding para centrar el overlay */
+  padding: 20px; 
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 30px auto;
+  max-width: 1100px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Renombramos 'h2' a '.title' */
+.title {
+  color: #1b4332;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.contenedor {
+  border: 3px dashed #95d5b2;
+  border-radius: 15px;
+  min-height: 160px;
+  padding: 15px;
+  background-color: #f1fdf9;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor.correcto {
+  background-color: #caffbf !important;
+}
+
+.contenedor.incorrecto {
+  background-color: #ffc9c9 !important;
+}
+
+.zonaJuego {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.desecho {
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: grab;
+  display: inline-block;
+  user-select: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+
+.desecho:hover {
+  background-color: #e9f5ec;
+}
+
+/* Esta es una clase que añadimos en React para el modo móvil */
+.seleccionado {
+  outline: 3px solid #1b4332;
+  background-color: #d1e7dd;
+}
+
+.volver {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.volver a {
+  background-color: #40916c;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.volver a:hover {
+  background-color: #1b4332;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .desecho {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .contenedor {
+    min-height: 130px;
+  }
+}

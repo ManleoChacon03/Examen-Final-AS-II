@@ -1,65 +1,55 @@
-import Image from "next/image";
+// app/page.tsx
+"use client"; // Necesario para el useEffect del audio
 
-export default function Home() {
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+import styles from "./page.module.css"; // Importamos los estilos de esta página
+
+export default function WelcomePage() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Replicamos tu 'onload' para intentar reproducir el audio
+  useEffect(() => {
+    const playAudio = async () => {
+      if (audioRef.current) {
+        try {
+          // Los navegadores modernos bloquean el autoplay con sonido.
+          // Si quieres que suene, el usuario debe interactuar primero.
+          // Lo dejaremos intentar, pero puede fallar (lo cual es normal).
+          await audioRef.current.play();
+        } catch (error) {
+          console.warn("Autoplay de audio bloqueado por el navegador.", error);
+        }
+      }
+    };
+    
+    const timer = setTimeout(playAudio, 100);
+    
+    return () => clearTimeout(timer); // Limpieza
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    // Usamos 'styles.body' para aplicar el fondo de pantalla
+    <div className={styles.body}>
+      
+      {/* Usamos 'styles.overlay' */}
+      <div className={styles.overlay}>
+        <h1>🌍 Bienvenido a Zacapa Limpia</h1>
+        <p>Descubre cómo cuidar tu entorno aprendiendo a gestionar los desechos.</p>
+        
+        {/* Usamos Link para ir a la página principal */}
+        <Link href="/inicio" className={styles.link}>
+          Entrar al sitio
+        </Link>
+      </div>
+
+      <audio ref={audioRef} id="audio" loop>
+        <source
+          src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_49a7bc5b17.mp3"
+          type="audio/mpeg"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        Tu navegador no soporta audio.
+      </audio>
     </div>
   );
 }
